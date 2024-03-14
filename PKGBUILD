@@ -28,11 +28,6 @@ makedepends=('git')
 source=("$pkgname::git+https://gitea.com/Archleaf/archleaf-neofetch.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd $pkgname
-  git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
-}
-
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
